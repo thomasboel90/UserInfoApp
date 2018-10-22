@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+
+
+	</head>
+
+	<body>
+	    <h1> Users Page </h1>
+	<!--renders a page that displays all your uers-->
+	    <p><strong> A list of all users </strong></p>
+	        
+	        <% parsedData.forEach (function (usersname){ %>
+	     	  
+	            <p>First Name: <%= usersname.firstname %></p>
+	            <p>Last Name: <%= usersname.lastname %></p>
+	            <p>Email: <%= usersname.email %></p> <br>
+	          
+	    <% }); %>
+
+	</body>
+</html>
