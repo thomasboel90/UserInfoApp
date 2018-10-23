@@ -74,13 +74,31 @@ app.post('/addUser', function (request, response) {
 
 		let json = JSON.stringify(parsedData);
 
-		fs.writeFile('./users.json', json, (err) => {
+		fs.writeFile('./users.json', json, (err, data) => {
 			if (err) {throw err}
 		})
 	})
 	response.redirect('/');
 });
 
+//Autocomplete:
+app.post('/ac', function(request, response) {
+	fs.readFile('./users.json', (err,data) => {
+		if (err) {throw err}
+
+		const parsedData = JSON.parse(data);
+		const result = [];
+
+			for (let i = 0; i < parsedData.length; i++) {
+				if (parsedData[i].firstname.indexOf(request.body.input) > -1 
+					|| parsedData[i].lastname.indexOf(request.body.input) > -1 === request.body.input) {
+					result.push(parsedData[i]);
+					console.log(result);
+				}
+			}
+		response.send(result);
+	})
+});
 
 //Server:
 app.listen (port, () => console.log(`Listening on port: ${port}`));
