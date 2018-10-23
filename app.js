@@ -74,7 +74,7 @@ app.post('/addUser', function (request, response) {
 
 		let json = JSON.stringify(parsedData);
 
-		fs.writeFile('./users.json', json, (err) => {
+		fs.writeFile('./users.json', json, (err, data) => {
 			if (err) {throw err}
 		})
 	})
