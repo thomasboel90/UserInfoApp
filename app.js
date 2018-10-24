@@ -3,14 +3,12 @@ const app = express();
 const port = 3000;
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(cookieParser());
 
 //Route 1: get request that renders all your users
 app.get('/', function(request, response) {
@@ -81,7 +79,7 @@ app.post('/addUser', function (request, response) {
 	response.redirect('/');
 });
 
-//Autocomplete:
+//Autocomplete
 app.post('/ac', function(request, response) {
 	fs.readFile('./users.json', (err,data) => {
 		if (err) {throw err}
@@ -99,6 +97,9 @@ app.post('/ac', function(request, response) {
 		response.send(result);
 	})
 });
+
+//Brandwidth optimization
+
 
 //Server:
 app.listen (port, () => console.log(`Listening on port: ${port}`));

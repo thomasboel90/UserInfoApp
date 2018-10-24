@@ -5,6 +5,13 @@
 </head>
 <body>
 
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="./search">Search Users</a></li>
+  <li><a href="./addUser">Add User</a></li>
+</ul>
+
+
     <form action='/search' method='post' autocomplete="off">
     	Search for user here:<br>
     	<input type='text' name='input' value='' id='input'><br>
@@ -17,10 +24,9 @@
 </html>
 
 <script>
-$(document).ready(function() {
+
 	$('#input').keyup(function() {
 		var input = $(this).val();
-
 		$('#result').empty();
 		$.post('/ac', {input:input}, function(response, status) {
 			for (var i = 0; i < response.length; i++){
@@ -28,5 +34,4 @@ $(document).ready(function() {
 			}
 		})
 	});
-});
 </script>
