@@ -23,6 +23,7 @@
 </html>
 
 <script>
+
 var keyOld = 0
 
 	$('#input').keyup(function() {
@@ -30,7 +31,6 @@ var keyOld = 0
 		if (keyNew - keyOld > 300) {
 
 		var input = $(this).val();
-
 		$('#result').empty();
 		$.post('/ac', {input:input}, function(response, status) {
 			for (var i = 0; i < response.length; i++){
@@ -43,4 +43,5 @@ var keyOld = 0
 		console.log('too many presses')
 	}
 });
+	});
 </script>
