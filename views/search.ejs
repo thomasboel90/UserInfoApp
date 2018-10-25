@@ -11,7 +11,6 @@
   <li><a href="./addUser">Add User</a></li>
 </ul>
 
-
     <form action='/search' method='post' autocomplete="off">
     	Search for user here:<br>
     	<input type='text' name='input' value='' id='input'><br>
@@ -25,7 +24,12 @@
 
 <script>
 
+var keyOld = 0
+
 	$('#input').keyup(function() {
+		const keyNew = new Date ();
+		if (keyNew - keyOld > 300) {
+
 		var input = $(this).val();
 		$('#result').empty();
 		$.post('/ac', {input:input}, function(response, status) {
@@ -33,5 +37,11 @@
 				$('#result').append('<li> '+ response[i].firstname +' '+ response[i].lastname +' </li>')
 			}
 		})
+
+		keyOld = keyNew
+	} else {
+		console.log('too many presses')
+	}
+});
 	});
 </script>
