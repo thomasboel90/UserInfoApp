@@ -24,14 +24,25 @@
 </html>
 
 <script>
+var keyOld = 0
 
 	$('#input').keyup(function() {
+		const keyNew = new Date ();
+		if (keyNew - keyOld > 300) {
+
 		var input = $(this).val();
+		
 		$('#result').empty();
+		
 		$.post('/ac', {input:input}, function(response, status) {
 			for (var i = 0; i < response.length; i++){
 				$('#result').append('<li> '+ response[i].firstname +' '+ response[i].lastname +' </li>')
 			}
 		})
-	});
+
+		keyOld = keyNew
+	} else {
+		console.log('too many presses')
+	}
+});
 </script>
