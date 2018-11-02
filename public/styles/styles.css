@@ -1,0 +1,13 @@
+li {
+	display: inline-block;
+	margin: 10px;
+}
+
+ul {
+	text-align: center
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center
+}

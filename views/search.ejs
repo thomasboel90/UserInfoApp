@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/styles/styles.css">
 </head>
 <body>
 
@@ -12,15 +12,17 @@
 </ul>
 
     <form action='/search' method='post' autocomplete="off">
-    	Search for user here:<br>
-    	<input type='text' name='input' value='' id='input'><br>
-    	<input type='submit' value='Submit'>
+    	<h2>Search for user here:</h2>
+    	<input placeholder="Type in name here..." type='text' name='input' value='' id='input'><br><br>
+    	<input type='submit' value='Search'>
     </form>
 
    	<ul class='list-group' id='result'></ul>
 
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
 var keyOld = 0
@@ -41,7 +43,7 @@ var keyOld = 0
 
 		keyOld = keyNew
 	} else {
-		console.log('too many presses')
+		console.log('slow down buddy :)')
 	}
 });
 </script>
